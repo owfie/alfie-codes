@@ -1,9 +1,12 @@
+import Image from 'next/image'
 import styles from './Project.module.scss'
 
-type Project = {
-  title: string
+export type Project = {
+  name: string
+  image: {
+    url: string
+  }[]
   description: string
-  images: string []
   github: string
 }
 
@@ -16,7 +19,16 @@ export const Project: React.FC<ProjectProps> = ({
 }) => {
   return (
     <div className={styles.Project}>
-      Hello world
+      <div className={styles.image}>
+        <Image 
+          src={project.image[0].url}
+          alt={project.name}
+          layout="fill"
+          objectFit="cover"
+
+        />
+      </div>
+      <b>{ project.name }</b>
     </div>
   )
 }

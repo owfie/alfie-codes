@@ -13,9 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:title" content="alfie.codes" key="title" />
       </Head>
       <Sidebar />
-      {/* <Page>
+      <Page>
         <Component {...pageProps} />
-      </Page> */}
+      </Page>
     </>
   )
 }
