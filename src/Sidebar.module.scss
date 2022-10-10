@@ -1,33 +1,36 @@
 .Sidebar {
-  width: 25vw;
+  // background-color: lightblue;
+  width: 300px;
+  flex-shrink:0;
   margin-right: 2em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
 
-  .upper_content {
-    display: flex;
-    flex-direction: column; 
-  }
 
-  b {
-    font-weight: 500;
-  }
+  // .upper_content {
+  //   display: flex;
+  //   flex-direction: column; 
+  // }
 
   .location {
-    color: lighten(#000, 50%);
     display: block;
-    margin-top: 0.3em;
+    margin-top: 0.4em;
+    margin-bottom: 0.8em;
+
+    @include smallcaps;
+  }
+
+  .copyright {
+    @include smallcaps;
   }
 
   a {
-    text-decoration: underline;
     margin-right: 0.5em;
   }
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 100vw;
     margin-right: 0;
   }
 }

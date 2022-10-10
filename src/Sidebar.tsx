@@ -7,13 +7,12 @@ export const Sidebar: React.FC = () => {
       <div className={styles.upper_content}>
         <b>Alfie Edgeworth</b>
         <span className={styles.location}>Adelaide, Australia</span>
-        <p>Product designer.</p>
         <div>
-          <Link href="mailto:hey@alfie.codes">Mail</Link>
-          <Link href="https://www.linkedin.com/in/alfie-edgeworth/">LinkedIn</Link>
+          <Link href="mailto:hey@alfie.codes">Contact</Link>
+          <Link href="https://read.cv/alfie">CV</Link>
         </div>
       </div>
-      © Alfie Edgeworth 2022
+      <span className={styles.copyright}>© Alfie Edgeworth 2022</span>
     </aside>
   )
 }
