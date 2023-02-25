@@ -10,7 +10,7 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 * {
@@ -19,12 +19,12 @@ a {
 
 #__next {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   width: 100vw;
   padding: 2em;
-  align-items: flex-start;
 
   > * {
     display: flex;
@@ -41,3 +41,7 @@ a {
 }
 
 // mobile 
+  b {
+    font-weight: 500;
+  }
+
