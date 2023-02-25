@@ -1,11 +1,11 @@
 .container {
   max-height: 100%;
-  max-width: 700px;
+  max-width: 900px;
   width: 100vw;
   display: flex;
   flex-direction: column;
   gap:4em;
-  padding :4em 0;
+  padding :8em 0;
 
   @media (max-width: 768px) {
     gap: 2em;
@@ -18,13 +18,15 @@
   }
 
   .bio {
-    padding: 0 4em;
+    padding: 0 8em;
 
     @media (max-width: 768px) {
       padding: 0 2em;
+
+      margin-bottom: -2em;
     }
 
-    margin-bottom: -2em;
+    margin-bottom: -4em;
   }
 
   .tiptap {
@@ -48,7 +50,7 @@
   }
 
   footer {
-    padding: 0 4em;
+    padding: 0 8em;
     display: flex;
     justify-content: space-between;
     column-gap: 4em;
