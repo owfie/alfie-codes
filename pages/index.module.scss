@@ -1,10 +1,11 @@
 .container {
-  width: auto;
+  max-height: 100%;
+  max-width: 900px;
+  width: 100vw;
   display: flex;
   flex-direction: column;
-
   gap:4em;
-  max-width: 1200px;
+  padding :8em 0;
 
   @media (max-width: 768px) {
     gap: 2em;
@@ -17,19 +18,26 @@
   }
 
   .bio {
-    padding: 0 4em;
+    padding: 0 8em;
+
+    @media (max-width: 768px) {
+      padding: 0 2em;
+
+      margin-bottom: -2em;
+    }
+
+    margin-bottom: -4em;
   }
 
   .tiptap {
     position: relative;
-    flex-basis: 600px;
-    flex-grow: 1;
-    flex-shrink: 1;
-    max-height: 400px;
+    aspect-ratio: 1.46;
+    min-height: 400px;
 
     img {
       object-fit: cover;
-      overflow: hidden;
+      object-position: center;
+      overflow-x: hidden;
       // disable drag
       user-select: none;
       -webkit-user-drag: none;
@@ -42,12 +50,16 @@
   }
 
   footer {
-    padding: 0 4em;
+    padding: 0 8em;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     column-gap: 4em;
     row-gap: 1em;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
+
+    @media (max-width: 768px) {
+      padding: 0 2em;
+    }
   }
 }
 .location {

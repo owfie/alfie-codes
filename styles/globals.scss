@@ -5,7 +5,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Inter', -apple-system, Helvetica Neue, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 a {
@@ -23,20 +23,10 @@ a {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
-  padding: 2em;
-
-  > * {
-    display: flex;
-    // background-color: lightgreen;
-    // width: 100%;
-  }
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-    padding: 2em;
   }
 }
 
