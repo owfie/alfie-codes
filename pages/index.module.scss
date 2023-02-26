@@ -1,44 +1,79 @@
+@import '../styles/variables';
+
 .container {
-  max-height: 100%;
-  max-width: 900px;
-  width: 100vw;
   display: flex;
   flex-direction: column;
-  gap:4em;
-  padding :8em 0;
+  max-height: 100%;
+  max-width: max-content;
+  width: 100vw;
+  padding: 10vh 0;
+  overflow-x: hidden;
 
-  @media (max-width: 768px) {
-    gap: 2em;
-  }
-
-  nav {
-    a {
-      margin-right: 0.7em;
-    }
-  }
-
-  .bio {
+  section {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 4em;
+    row-gap: 1em;
     padding: 0 8em;
+    align-items: flex-end;
+    flex-wrap: wrap;
 
     @media (max-width: 768px) {
       padding: 0 2em;
-
-      margin-bottom: -2em;
     }
 
-    margin-bottom: -4em;
+    .location {
+      color: $light-text-subtle;
+      @include dark {
+        color: $dark-text-subtle;
+      }
+      display: block;
+      margin-top: 0.3em;
+    }
+
+    .bio {
+      margin-bottom: 0.5em;
+      white-space: nowrap;
+    }
+
+    .switch {
+      position: relative;
+      cursor: pointer;
+      height: 10vh;
+      min-height: 4em;
+      max-height: 6em;
+      aspect-ratio: 0.64;
+
+      @media (max-width: 768px) {
+        height: 8vh;
+      }
+
+      img {
+        object-fit: contain;
+        overflow-x: hidden;
+        user-select: none;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+      }
+    }
   }
 
   .tiptap {
     position: relative;
-    aspect-ratio: 1.46;
-    min-height: 400px;
+    width: 100%;
+    aspect-ratio: 2;
+    height: 500px;
+    margin-top: 1em;
+    margin-bottom: 3em;
+    min-height: 300px;
 
     img {
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
       overflow-x: hidden;
-      // disable drag
       user-select: none;
       -webkit-user-drag: none;
       -khtml-user-drag: none;
@@ -47,25 +82,31 @@
       user-drag: none;
     }
 
+    @media (max-width: 768px) {
+      height: 300px;
+      margin-bottom: 2em;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+
+
   }
 
-  footer {
-    padding: 0 8em;
-    display: flex;
-    justify-content: space-between;
-    column-gap: 4em;
-    row-gap: 1em;
+  .footer {
     flex-wrap: wrap-reverse;
+  }
+}
 
-    @media (max-width: 768px) {
-      padding: 0 2em;
+.nav {
+  a {
+    margin-right: 0.7em;
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 }
-.location {
-  color: lighten(#000, 60%);
-  display: block;
-  margin-top: 0.3em;
-}
-
-
