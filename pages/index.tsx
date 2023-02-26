@@ -8,7 +8,7 @@ import { ThemeContext } from './_app'
 
 const Home: NextPage = ( props ) => {
 
-  const { toggleTheme } = useContext(ThemeContext)
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   return (
     <div className={styles.container}>
@@ -27,11 +27,35 @@ const Home: NextPage = ( props ) => {
         <div 
           className={styles.switch}
           onClick={toggleTheme}
-        />
+        >
+          <Image 
+            style={{visibility: `${theme === 'light' ? 'visible' : 'hidden'}`}} 
+            layout="fill" 
+            src={'/switch_light.png'} 
+            alt={'A light switch.'}
+          />
+          <Image 
+            style={{visibility: `${theme === 'dark' ? 'visible' : 'hidden'}`}} 
+            layout="fill" 
+            src={'/switch_dark.png'} 
+            alt={'A light switch.'}
+          />
+        </div>
       </section>
       <div className={styles.tiptap}>
-          <Image layout="fill" src={'/desk.png'} alt={'An illustrated Alfie sits at a desk on his laptop.'}/>
-      </div>
+          <Image 
+            style={{visibility: `${theme === 'light' ? 'visible' : 'hidden'}`}} 
+            layout="fill" 
+            src={'/desk_light.png'} 
+            alt={'An illustrated Alfie sits at a desk on his laptop.'}
+          />
+          <Image 
+            style={{visibility: `${theme === 'dark' ? 'visible' : 'hidden'}`}} 
+            layout="fill" 
+            src={'/desk_dark.png'} 
+            alt='An illustrated Alfie sits at a desk on his laptop. It is dark, but his face is illuminated by the glow of his laptop.'
+          />
+        </div>
       <section className={styles.footer}>
         <span>© Alfie Edgeworth 2023</span>
         <Nav 

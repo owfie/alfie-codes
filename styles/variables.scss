@@ -1,8 +1,8 @@
 $dark-bg: #171718;
 $light-bg: #ffffff;
-$dark-text: #dadada;
+$dark-text: #f1f1f1;
 $light-text: #000000;
-$dark-text-subtle: #c0c0c092;
+$dark-text-subtle: darken($dark-text, 40%);
 $light-text-subtle: lighten($light-text, 60%);
 
 @mixin dark {
