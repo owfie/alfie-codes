@@ -2,9 +2,14 @@ import '../styles/globals.scss'
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 const localStorageKey = 'alfie.codes'
+
+export const ThemeContext = createContext({
+  theme: 'light',
+  toggleTheme: () => {}
+})
 
 function App({ Component, pageProps }: AppProps) {
 
@@ -45,10 +50,9 @@ function App({ Component, pageProps }: AppProps) {
         <title>alfie.codes</title>
         <meta property="og:title" content="alfie.codes" key="title" />
       </Head>
-      <button onClick={() => setTheme(prev => prev === 'light' ? 'dark' : 'light')}>
-        hit the lights
-      </button>
-      <Component {...pageProps} />
+      <ThemeContext.Provider value={{ theme, toggleTheme: () => { setTheme(theme === 'light' ? 'dark' : 'light')} }}>
+        <Component {...pageProps} />
+      </ThemeContext.Provider>
     </>
   )
 }

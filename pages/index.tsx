@@ -3,20 +3,30 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import styles from './index.module.scss'
+import { useContext } from 'react'
+import { ThemeContext } from './_app'
 
 const Home: NextPage = ( props ) => {
 
+  const { toggleTheme } = useContext(ThemeContext)
+
   return (
     <div className={styles.container}>
-      <section className={styles.bio}>
-        <b>Alfie Edgeworth, B. CS</b>
-        <span className={styles.location}>Adelaide, Australia</span>
-        <p>UI Engineer & Designer</p>
-        <Nav 
-          links={[
-            {href: 'mailto:hey@alfie.codes', title: 'Mail'},
-            {href: 'https://read.cv/alfie', title: 'CV'}
-          ]}
+      <section>
+        <div className={styles.bio}>
+          <b>Alfie Edgeworth, B. CS</b>
+          <span className={styles.location}>Adelaide, Australia</span>
+          <p>UI Engineer & Designer</p>
+          <Nav 
+            links={[
+              {href: 'mailto:hey@alfie.codes', title: 'Mail'},
+              {href: 'https://read.cv/alfie', title: 'CV'}
+            ]}
+          />
+        </div>
+        <div 
+          className={styles.switch}
+          onClick={toggleTheme}
         />
       </section>
       <div className={styles.tiptap}>
