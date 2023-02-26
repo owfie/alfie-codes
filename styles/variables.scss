@@ -1,0 +1,24 @@
+$dark-bg: #171718;
+$light-bg: #ffffff;
+$dark-text: #C3C3C3;
+$light-text: #000000;
+$dark-text-subtle: #c0c0c092;
+$light-text-subtle: lighten($light-text, 60%);
+
+@mixin dark {
+  &[data-theme="dark"] {
+    @content;
+  }
+  [data-theme="dark"] & {
+    @content;
+  }
+}
+
+@mixin light {
+  &[data-theme="light"] {
+    @content;
+  }
+  [data-theme="light"] & {
+    @content;
+  }
+}
