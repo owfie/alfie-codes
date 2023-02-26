@@ -14,8 +14,8 @@ const Home: NextPage = ( props ) => {
         <p>UI Engineer & Designer</p>
         <Nav 
           links={[
-            {href: 'mailto:hey@alfie.codes', title: 'Contact'},
-            {href: 'https://read.cv/alfie', title: 'Resume'}
+            {href: 'mailto:hey@alfie.codes', title: 'Mail'},
+            {href: 'https://read.cv/alfie', title: 'CV'}
           ]}
         />
       </section>
