@@ -8,21 +8,21 @@ const Home: NextPage = ( props ) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.bio}>
+      <section className={styles.bio}>
         <b>Alfie Edgeworth, B. CS</b>
         <span className={styles.location}>Adelaide, Australia</span>
         <p>UI Engineer & Designer</p>
         <Nav 
           links={[
-            {href: 'mailto:hey@alfie.codes', title: 'Mail'},
-            {href: 'https://read.cv/alfie', title: 'CV'}
+            {href: 'mailto:hey@alfie.codes', title: 'Contact'},
+            {href: 'https://read.cv/alfie', title: 'Resume'}
           ]}
         />
-      </div>
+      </section>
       <div className={styles.tiptap}>
           <Image layout="fill" src={'/desk.png'} alt={'An illustrated Alfie sits at a desk on his laptop.'}/>
       </div>
-      <footer>
+      <section className={styles.footer}>
         <span>© Alfie Edgeworth 2023</span>
         <Nav 
           links={[
@@ -32,7 +32,7 @@ const Home: NextPage = ( props ) => {
             {href: 'https://dribbble.com/owfie/', title: 'Dribbble'},
           ]}
         />
-      </footer>
+      </section>
     </div>
   )
 }

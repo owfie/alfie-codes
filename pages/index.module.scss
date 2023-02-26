@@ -1,44 +1,41 @@
 .container {
-  max-height: 100%;
-  max-width: 900px;
-  width: 100vw;
   display: flex;
   flex-direction: column;
-  gap:4em;
-  padding :8em 0;
+  max-height: 100%;
+  max-width: 800px;
+  width: 100vw;
+  padding: 10vh 0;
+  overflow-x: hidden;
 
-  @media (max-width: 768px) {
-    gap: 2em;
-  }
-
-  nav {
-    a {
-      margin-right: 0.7em;
-    }
-  }
-
-  .bio {
+  section {
     padding: 0 8em;
 
     @media (max-width: 768px) {
       padding: 0 2em;
-
-      margin-bottom: -2em;
     }
 
-    margin-bottom: -4em;
+    .location {
+      color: lighten(#000, 60%);
+      display: block;
+      margin-top: 0.3em;
+    }
   }
 
   .tiptap {
     position: relative;
+    width: 100%;
     aspect-ratio: 1.46;
-    min-height: 400px;
+    min-height: 300px;
+    margin-bottom: 4em;
+
+    @media (max-width: 768px) {
+      margin-bottom: 2em;
+    }
 
     img {
       object-fit: cover;
-      object-position: center;
+      object-position: top;
       overflow-x: hidden;
-      // disable drag
       user-select: none;
       -webkit-user-drag: none;
       -khtml-user-drag: none;
@@ -49,23 +46,21 @@
 
   }
 
-  footer {
-    padding: 0 8em;
+  .footer {
     display: flex;
     justify-content: space-between;
     column-gap: 4em;
     row-gap: 1em;
     flex-wrap: wrap-reverse;
+  }
+}
 
-    @media (max-width: 768px) {
-      padding: 0 2em;
+.nav {
+  a {
+    margin-right: 0.7em;
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 }
-.location {
-  color: lighten(#000, 60%);
-  display: block;
-  margin-top: 0.3em;
-}
-
-
