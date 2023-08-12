@@ -14,6 +14,12 @@ body {
   margin: 0;
   font-family: 'Inter', -apple-system, Helvetica Neue, sans-serif;
   font-size: 15px;
+
+  font-weight: 500;
+
+  @include dark {
+    font-weight: 400;
+  }
 }
 
 a {
@@ -38,9 +44,3 @@ a {
   @media (max-width: 768px) {
   }
 }
-
-// mobile 
-  b {
-    font-weight: 500;
-  }
-

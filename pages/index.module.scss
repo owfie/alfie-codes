@@ -3,101 +3,74 @@
 .container {
   display: flex;
   flex-direction: column;
-  max-height: 100%;
-  max-width: max-content;
-  width: 100vw;
-  padding: 10vh 0;
+  height: 100dvh;
+  width: 100dvw;
+  max-width:800px;
+  padding: 25px;
   overflow-x: hidden;
+  gap: 50px;
 
-  section {
+  .header {
     display: flex;
+    flex-direction: row;
+    width: 100%;
     justify-content: space-between;
-    column-gap: 4em;
-    row-gap: 1em;
-    padding: 0 8em;
-    align-items: flex-end;
-    flex-wrap: wrap;
 
-    @media (max-width: 768px) {
-      padding: 0 2em;
-    }
+    nav {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
 
-    .location {
-      color: $light-text-subtle;
-      @include dark {
-        color: $dark-text-subtle;
-      }
-      display: block;
-      margin-top: 0.3em;
-    }
+      a {
+        text-decoration: none;
 
-    .bio {
-      margin-bottom: 0.5em;
-      white-space: nowrap;
-    }
-
-    .switch {
-      position: relative;
-      cursor: pointer;
-      height: 10vh;
-      min-height: 4em;
-      max-height: 6em;
-      aspect-ratio: 0.64;
-
-      @media (max-width: 768px) {
-        height: 8vh;
-      }
-
-      img {
-        object-fit: contain;
-        overflow-x: hidden;
-        user-select: none;
-        -webkit-user-drag: none;
-        -khtml-user-drag: none;
-        -moz-user-drag: none;
-        -o-user-drag: none;
-        user-drag: none;
+        &.active {
+          text-decoration: underline;
+        }
       }
     }
   }
 
   .tiptap {
     position: relative;
-    width: 100%;
-    aspect-ratio: 2;
-    height: 500px;
-    margin-top: 1em;
-    margin-bottom: 3em;
-    min-height: 300px;
+    margin: 0 -25px;
+    margin-top: 50px;
 
-    img {
-      object-fit: contain;
-      object-position: center;
-      overflow-x: hidden;
-      user-select: none;
-      -webkit-user-drag: none;
-      -khtml-user-drag: none;
-      -moz-user-drag: none;
-      -o-user-drag: none;
-      user-drag: none;
-    }
-
-    @media (max-width: 768px) {
-      height: 300px;
-      margin-bottom: 2em;
-
+    .switch {
       img {
-        object-fit: cover;
-        object-position: center;
+        @include img;
+      }
+
+      position: absolute;
+      right: 15px;
+      top: -50px;
+      z-index: 1;
+      cursor: pointer;
+      transform: scale(0.8);
+
+      @include mobile {
+        transform: scale(0.6);
       }
     }
 
+    .me {
+      min-width: 800px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
 
-
+      img {
+        @include img;
+      }
+    }
   }
 
   .footer {
+    display: flex;
+    justify-content: space-between;
     flex-wrap: wrap-reverse;
+    color: $light-text-subtle;
+    font-weight: 400;
   }
 }
 
