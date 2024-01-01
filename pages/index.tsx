@@ -1,77 +1,60 @@
-import type { NextPage } from 'next'
-import Link from 'next/link'
-import Image from 'next/image'
-
 import styles from './index.module.scss'
-import { useContext } from 'react'
-import { ThemeContext } from './_app'
-import { useRouter } from 'next/router'
+import { Metadata } from '../src/types'
+import { Subtle } from '../src/Subtle'
+import { Link } from "../src/Link"
+import { getMetadataFromMdxFiles } from '../src/getMetadata'
 
-const Home: NextPage = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext)
+export async function getStaticProps() {
+  const metadataList = getMetadataFromMdxFiles()
 
+  return {
+    props: {
+      metadataList,
+    },
+  }
+}
+
+interface IHome {
+  metadataList: Metadata[]
+}
+
+const Home = ({ metadataList }: IHome) => {
   return (
     <>
-      <div>
-        <p className={styles.bio}>
-          My name’s Alfie.
-          I’m a frontend developer and designer based in Adelaide, Australia.
-          I specialise in developing server-side React applications with Typescript.
-          I’m passionate about product design and UI systems.
-        </p>
-        <p>
-          I’m currently doing frontend for <a href="https://fluidity.money">Fluidity</a>.
-          You can reach me via <a href="mailto:alfie.edgeworth@pm.me">email</a>.
-        </p>
+      <div className={styles.bio}>
+          Alfie Edgeworth is a frontend engineer and designer based in Adelaide, Australia.
       </div>
-      <div className={styles.tiptap}>
-        <div className={styles.switch} onClick={toggleTheme} style={{ display: theme === 'light' ? 'unset' : 'none' }}>
-          <Image
-            loading="eager"
-            width="67"
-            height="104"
-            src={`/switch_light.png`}
-            alt={'A light switch.'}
-          />
-        </div>
-        <div className={styles.switch} onClick={toggleTheme} style={{ display: theme === 'dark' ? 'unset' : 'none' }}>
-          <Image
-            loading="eager"
-            width="67"
-            height="104"
-            src={`/switch_dark.png`}
-            alt={'A light switch.'}
-          />
-        </div>
-        <div className={styles.me} style={{ display: theme === 'light' ? 'unset' : 'none' }}>
-          <Image
-            loading="eager"
-            width="1652"
-            height="816"
-            src={`/desk_light.png`}
-            alt={'An illustrated Alfie sits at a desk on his laptop.'}
-          />
-        </div>
-        <div className={styles.me} style={{ display: theme === 'dark' ? 'unset' : 'none' }}>
-          <Image
-            loading="eager"
-            width="1652"
-            height="816"
-            src={`/desk_dark.png`}
-            alt={'An illustrated Alfie sits at a desk on his laptop. It is dark, but his face is illuminated by the glow of his laptop.'}
-          />
-        </div>
-      </div>
-      {/* <footer className={styles.footer}>
-        © Alfie Edgeworth 2023
-        <Nav
-          links={[
-            { href: 'https://github.com/owfie', title: 'GitHub' },
-            { href: 'https://www.linkedin.com/in/alfie-edgeworth/', title: 'LinkedIn' },
-            { href: 'https://dribbble.com/owfie/', title: 'Dribbble' },
-          ]}
-        />
-      </footer> */}
+      <List>
+        <li>
+          <span>Founder at <Link href="https://tauhaus.au">Tauhaus</Link></span>
+          <Subtle>2023</Subtle>
+        </li>
+        <li>
+          <span>Frontend Engineer at <Link href="https://fluidity.money">Fluidity</Link></span>
+          <Subtle>2022 - 2023</Subtle>
+        </li>
+        <li>
+          <span>Junior Developer at <Link href="https://enabled.com.au">Enabled</Link></span>
+          <Subtle>2020 - 2021</Subtle>
+        </li>
+      </List>
+      <Nav
+        links={[
+          { href: 'mailto:alfie.edgeworth@pm.me', title: 'Mail' },
+          { href: 'https://www.linkedin.com/in/alfie-edgeworth/', title: 'LinkedIn' },
+        ]}
+      />
+      <List>
+      {
+        metadataList.map((metadata) => {
+          return <li key={metadata.slug}>
+            <Link href={metadata.slug}>{metadata.title}</Link>
+            <Subtle>2023</Subtle>
+          </li>
+        })
+      }
+
+      </List>
     </>
   )
 }
@@ -85,5 +68,11 @@ const Nav: React.FC<INav> = (props) => <nav className={styles.nav}>
     <Link key={`${l.title}-${i}`} href={l.href}>{l.title}</Link>
   )}
 </nav>
+
+const List: React.FC = (props) => {
+  return <ul className={styles.List}>
+    {props.children}
+  </ul>
+}
 
 export default Home
