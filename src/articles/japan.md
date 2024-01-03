@@ -6,8 +6,8 @@ year: 2023
 
 *I wrote this for my friends.*
 
-In April 2023 I visited Japan for a work trip. I quickly learned that finding quality espresso-based coffee was not as straight-forward as the likes of Adelaide or Melbourne. While one may find a Starbucks or Excelsior Café on most busy streets, specialty venues are more discrete (although often more rewarding). The following is my rudimentary accounting of the better cafés I managed to attend on my first visit, many of which you will find well-reviewed online.
-
+In April 2023 I visited Japan for a work trip. I quickly learned that finding quality espresso-based coffee was not as straight-forward as the likes of Adelaide or Melbourne. While one may find a Starbucks or Excelsior Café on most busy streets, specialty venues are more discrete (although often more rewarding). The following is my rudimentary accounting of the better cafés I managed to attend on my first visit, many of which you will find well-reviewed online.\
+\
 For the purpose of this guide, I have only included venues where I had a good coffee and would visit again. The more stars I give (up to three), the more strongly I feel that you should go out of your way to visit the café. This list is sorted by distance to Tokyo Station.
 
 __Coffee Base BnA ★★★__\
