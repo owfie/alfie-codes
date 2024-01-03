@@ -2,7 +2,7 @@
 
 import { Page } from "@/components"
 
-const Error = ({ statusCode }) => {
+const Error = ({ statusCode }: { statusCode: any }) => {
   return <Page>{statusCode}</Page>
 }
 
