@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.content {
+  max-width: 800px;
+
+  p {
+    margin-block-start: 2.5em;
+    margin-block-end: 2.5em;
+  }
+}

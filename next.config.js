@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   reactStrictMode: true,
-  images: {
-    domains: ['media.graphassets.com'],
-  },
 }
 
 module.exports = nextConfig
