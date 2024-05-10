@@ -10,8 +10,8 @@ const Home = () => {
       </div>
       <List>
         <li>
-          <span>Founder at <Link href="https://tauhaus.au">Tauhaus</Link></span>
-          <Subtle>2023</Subtle>
+          <span>Full Stack Engineer at <Link href="https://airteam.com.au">Airteam</Link></span>
+          <Subtle>2024</Subtle>
         </li>
         <li>
           <span>Frontend Engineer at <Link href="https://fluidity.money">Fluidity</Link></span>
