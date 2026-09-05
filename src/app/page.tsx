@@ -1,6 +1,5 @@
 import { Link, Section, Subtle } from '@/components'
 import { ExternalLink } from '@/components/ExternalLink'
-import { ThemeToggle } from '@/components/ThemeToggle'
 import { articles } from '@/utils/getMetadata'
 import styles from './styles.module.scss'
 
@@ -46,10 +45,7 @@ const Home = () => {
       </header>
       <p>
         Design Engineer. Currently{' '}
-        <ExternalLink href="https://beyondlabs.net">
-          Beyond Labs
-        </ExternalLink>
-        .
+        <ExternalLink href="https://beyondlabs.net">Beyond Labs</ExternalLink>.
       </p>
       <div className={styles.links}>
         <ExternalLink href="https://www.linkedin.com/in/alfie-edgeworth">

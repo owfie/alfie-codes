@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
-        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: theme must apply before first paint */}
+        {/* Inline and unminified: the theme must apply before first paint */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className={styles.layout}>

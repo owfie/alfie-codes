@@ -2,8 +2,10 @@
 
 import { Page } from '@/components'
 
-const Error = ({ statusCode }: { statusCode: any }) => {
-  return <Page>{statusCode}</Page>
+// Next's error boundary is handed { error, reset }, never a status code, so
+// this mirrors not-found rather than trying to report one.
+const ErrorPage = () => {
+  return <Page>Error</Page>
 }
 
-export default Error
+export default ErrorPage

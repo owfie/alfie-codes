@@ -1,6 +1,6 @@
+import path from 'node:path'
 import matter from 'gray-matter'
 import { notFound } from 'next/navigation'
-import path from 'path'
 import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
 import rehypeStringify from 'rehype-stringify'
