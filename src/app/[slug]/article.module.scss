@@ -1,14 +1,110 @@
+@use '@/styles/variables.scss' as *;
+
 .header {
   display: flex;
   flex-direction: column;
   gap: 0.2em;
+  margin-bottom: 2em;
 }
 
 .content {
-  max-width: 800px;
+  h1,h2,h3,h4,h5,h6 {
+    font-size: 1em;
+    font-weight: 500;
+    margin-block-start: 3.5em;
+    margin-block-end: 1em;
+  }
+
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    scroll-margin-top: 100px;
+
+    label {
+      color: var(--subtle);
+      font-weight: 400;
+    }
+  }
 
   p {
-    margin-block-start: 2.5em;
+    margin-block-start: 0;
     margin-block-end: 2.5em;
+  }
+
+  a {
+    @include link;
+  }
+
+  // Same 1px hairline as the section-header rules on the index
+  hr {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin-block: 2.5em;
+  }
+
+  img {
+    @include img;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  // A lone image is capped, so a portrait shot can't fill the whole viewport
+  p:has(> img:only-child) > img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 70vh;
+    margin-inline: auto;
+  }
+
+  // Images on adjacent lines of one paragraph render as a row
+  p:has(> img + img) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  p:has(> img + img + img) {
+    grid-template-columns: repeat(3, 1fr);
+
+    // Three portraits across is too narrow to read on a phone
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  // An italic-only paragraph following an image is a caption
+  p:has(> img) + p:has(> em:only-child) {
+    color: var(--subtle);
+    margin-block-start: -1.5em;
+  }
+
+  label {
+    color: var(--subtle);
+  }
+
+  // Train-line badges, authored as ::lines[H T G]. A leaf directive renders
+  // unwrapped, so a stray one carries the block spacing a paragraph used to give it.
+  :global(.lines) {
+    display: flex;
+    gap: 6px;
+    margin-block-start: -0.6em;
+    margin-block-end: 2.5em;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+  }
+
+  // Hoisted into the heading, the badges park against the right of that row
+  h2 :global(.lines) {
+    margin-block: 0;
+    margin-inline-start: auto;
+    align-self: center;
+    flex-shrink: 0;
   }
 }

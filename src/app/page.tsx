@@ -1,61 +1,89 @@
-import styles from './styles.module.scss'
-import { Link, Subtle } from "@/components"
+import { Link, Section, Subtle } from '@/components'
+import { ExternalLink } from '@/components/ExternalLink'
 import { articles } from '@/utils/getMetadata'
+import styles from './styles.module.scss'
+
+const projects = [
+  // {
+  //   title: 'Alias',
+  //   href: '#',
+  //   description: 'The QA validation layer for your application.',
+  // },
+  {
+    title: 'Atto',
+    href: 'https://atto.to',
+    description: 'The cloud for small software.',
+  },
+  {
+    title: 'Alias',
+    href: 'https://alias.is',
+    description: 'The QA validation layer for your application.',
+  },
+  {
+    title: 'Retro',
+    href: 'https://retro.ac',
+    description: 'Time tracking for humans.',
+  },
+  {
+    title: 'Sans',
+    href: 'https://sans.md',
+    description: 'Local Markdown viewer for project documentation.',
+  },
+  // {
+  //   title: 'Inform',
+  //   href: '#',
+  //   description: 'Prompt-based substrate for computer vision sports analysis.',
+  // },
+]
 
 const Home = () => {
   return (
     <main className={styles.container}>
-      <div className={styles.bio}>
-          Alfie Edgeworth is a frontend engineer and designer based in Adelaide, Australia.
+      <header className={styles.bio}>
+        <b>Alfie Edgeworth</b>
+        <Subtle>Adelaide, Australia</Subtle>
+      </header>
+      <p>
+        Design Engineer. Currently{' '}
+        <ExternalLink href="https://beyondlabs.net">Beyond Labs</ExternalLink>.
+      </p>
+      <div className={styles.links}>
+        <ExternalLink href="https://www.linkedin.com/in/alfie-edgeworth">
+          LinkedIn
+        </ExternalLink>
+        <ExternalLink href="mailto:hey@alfie.codes">Email</ExternalLink>
       </div>
-      <List>
-        <li>
-          <span>Full Stack Engineer at <Link href="https://airteam.com.au">Airteam</Link></span>
-          <Subtle>2024</Subtle>
-        </li>
-        <li>
-          <span>Frontend Engineer at <Link href="https://fluidity.money">Fluidity</Link></span>
-          <Subtle>2022 - 2023</Subtle>
-        </li>
-        <li>
-          <span>Junior Developer at <Link href="https://enabled.com.au">Enabled</Link></span>
-          <Subtle>2020 - 2021</Subtle>
-        </li>
-      </List>
-      <Nav
-        links={[
-          { href: 'mailto:alfie.edgeworth@pm.me', title: 'Mail' },
-          { href: 'https://www.linkedin.com/in/alfie-edgeworth/', title: 'LinkedIn' },
-        ]}
-      />
-      <List>
-      {
-        articles.map((metadata) => {
-          return <li key={metadata.slug}>
-            <Link href={metadata.slug}>{metadata.title}</Link>
-            <Subtle>{metadata.year}</Subtle>
-          </li>
-        })
-      }
-      </List>
+      <Section title="Notes">
+        <div className={styles.notes}>
+          {articles.map((metadata) => {
+            return (
+              <Link
+                key={metadata.slug}
+                href={metadata.slug}
+                className={styles.note}
+              >
+                <span>{metadata.title}</span>
+                <Subtle>{metadata.year}</Subtle>
+              </Link>
+            )
+          })}
+        </div>
+      </Section>
+      <Section title="Projects">
+        <div className={styles.projects}>
+          {projects.map((project) => {
+            return (
+              <div key={project.title} className={styles.project}>
+                <ExternalLink href={project.href}>{project.title}</ExternalLink>
+                <Subtle>{project.description}</Subtle>
+              </div>
+            )
+          })}
+        </div>
+      </Section>
+      {/* <ThemeToggle /> */}
     </main>
   )
-}
-
-interface INav {
-  links: { href: string, title: string }[]
-}
-
-const Nav: React.FC<INav> = (props) => <nav className={styles.nav}>
-  {props.links.map((l, i) =>
-    <Link key={`${l.title}-${i}`} href={l.href}>{l.title}</Link>
-  )}
-</nav>
-
-const List = (props: { children: React.ReactNode }) => {
-  return <ul className={styles.List}>
-    {props.children}
-  </ul>
 }
 
 export default Home

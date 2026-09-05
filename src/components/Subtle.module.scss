@@ -1,4 +1,5 @@
 .Subtle {
-  color: #ccc;
-  display: inline-block;
+  color: var(--subtle);
+  display: block;
+  font-weight: 400;
 }

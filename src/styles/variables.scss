@@ -1,30 +1,42 @@
+// Dark mode
 $dark-bg: #171718;
-$light-bg: #F7F7F7;
 $dark-text: #e2e2e2;
-$light-text: #404040;
 $dark-text-subtle: #4c555a;
-$light-text-subtle: #d4d4d4;
+$dark-rule: #2a2a2c;
 
-@mixin dark {
-  &[data-theme="dark"] {
-    @content;
-  }
-  [data-theme="dark"] & {
-    @content;
-  }
-}
+// Light mode
+$light-text: #1e1e1e;
+$light-bg: #fafafa;
+$light-text-subtle: #c9c9c9;
+$light-rule: #ececec;
 
-@mixin light {
-  &[data-theme="light"] {
-    @content;
-  }
-  [data-theme="light"] & {
-    @content;
-  }
-}
+// Layout metrics
+$layout-padding: 25px; // body gutter, applied by .layout
+$sticky-top: 100px; // where the sticky aside parks itself
+// Pushes page content down so the article starts level with the Index link
+$content-top: $sticky-top - $layout-padding;
+$aside-left: 100px; // distance from the viewport edge to the aside
+$aside-indent: $aside-left - $layout-padding; // the gutter already gives us 25px
+$aside-min: 160px; // floor for the aside column, so it never overlaps body text
+$content-width: 600px; // the article column
+$toc-width: 220px; // fixed, so the breakpoint below is arithmetic rather than a guess
+$toc-gap: $aside-left; // clearance from TOC to article, mirroring the left gutter
 
+// The TOC only earns its place while $toc-gap fits between it and the article.
+// Centred layout puts half the slack on each side, hence the doubling:
+//   viewport = article + 2 x (left gutter + TOC + gap)
+$toc-min-viewport: $content-width + 2 * ($aside-left + $toc-width + $toc-gap);
+
+// Mixins
 @mixin mobile {
   @media (max-width: 768px) {
+    @content;
+  }
+}
+
+// Too narrow to sit a table of contents beside the centred article column
+@mixin no-toc-room {
+  @media (max-width: $toc-min-viewport - 1px) {
     @content;
   }
 }
@@ -37,4 +49,15 @@ $light-text-subtle: #d4d4d4;
   -moz-user-drag: none;
   -o-user-drag: none;
   user-drag: none;
+}
+
+// Link underlines. Structural hairlines (<hr>, section headers) use --rule
+$underline: #e7e7e7;
+
+// External links
+@mixin link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: $underline;
+  text-underline-offset: 5px;
 }

@@ -1,7 +1,7 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import matter from 'gray-matter'
-import fs from "fs"
-import path from "path"
-import { Metadata } from './types'
+import type { Metadata } from './types'
 
 export const getMetadataFromMdxFiles = () => {
   const pagesDirectory = path.join(process.cwd(), 'src/articles')
@@ -14,11 +14,16 @@ export const getMetadataFromMdxFiles = () => {
     const fullPath = path.join(pagesDirectory, fileName)
     const { data } = matter.read(fullPath)
 
-    return { title: data.title, slug, age: data.age, year: data.year } as Metadata
-  });
+    return {
+      title: data.title,
+      slug,
+      age: data.age,
+      year: data.year,
+    } as Metadata
+  })
 
   return metadataList.filter((metadata) => !!metadata.title)
 }
 
 export const articles = getMetadataFromMdxFiles()
-export const whitelist = articles.map(article => article.slug)
+export const whitelist = articles.map((article) => article.slug)

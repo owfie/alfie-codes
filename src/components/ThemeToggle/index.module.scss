@@ -1,0 +1,47 @@
+@use '@/styles/variables.scss' as *;
+
+.desk {
+  position: relative;
+
+  // The desk illustration paints over the switch; its transparent wall area
+  // lets the switch show through and clicks fall through to the button.
+  > img {
+    @include img;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+  }
+
+  img.dark {
+    display: none;
+  }
+
+  :global([data-theme='dark']) & {
+    img.light {
+      display: none;
+    }
+
+    img.dark {
+      display: block;
+    }
+  }
+}
+
+.switch {
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  z-index: 0;
+  left: 36%;
+  top: 12%;
+  width: 3.5%;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}

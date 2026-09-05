@@ -1,4 +1,4 @@
-import { Page } from "@/components"
+import { Page } from '@/components'
 
 const NotFound = () => {
   return <Page>404</Page>
