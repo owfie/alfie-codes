@@ -1,5 +1,7 @@
-import { Page } from "./Page"
-import { Subtle } from "./Subtle"
-import { Link } from "./Link"
+import { Haptics } from './Haptics'
+import { Link } from './Link'
+import { Page } from './Page'
+import { Section } from './Section'
+import { Subtle } from './Subtle'
 
-export { Page, Subtle, Link }
+export { Haptics, Link, Page, Section, Subtle }

@@ -1,42 +1,76 @@
+@use '@/styles/variables.scss' as *;
+
 .layout {
-  min-height: 100dvh;
-  padding: 25px;
+  padding: $layout-padding;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
   display: flex;
   flex-direction: column;
 
-  max-width:800px;
-  overflow-x: hidden;
-  gap: 25px;
+  width: 100%;
+  max-width: 600px;
+  gap: 4em;
 
-  li {
+  header.bio {
     display: flex;
-    gap: 0.6em;
-    row-gap: 0.2em;
-    flex-wrap: wrap;
+    flex-direction: column;
+    // Lines up with the article title and the Index link on article pages
+    margin-top: $content-top;
 
-    * {
-      // white-space: nowrap;
-      line-height: 1.5em;
+    @include mobile {
+      margin-top: 0;
     }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  section {
+    margin-top: 4em;
   }
 }
 
-.nav {
-  a {
-    margin-right: 0.7em;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
+.links {
+  display: flex;
+  gap: 24px;
 }
 
-.List {
+.notes {
   display: flex;
   flex-direction: column;
-  gap: 0.3em;
+  gap: 1em;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2em;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em 5em;
+  margin-top: 0.5em;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+
+  span {
+    max-width: 270px;
+  }
 }

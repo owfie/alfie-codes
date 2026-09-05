@@ -1,0 +1,14 @@
+.Toc {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  a {
+    color: var(--subtle);
+    transition: color 0.15s ease;
+
+    &[data-active] {
+      color: var(--text);
+    }
+  }
+}

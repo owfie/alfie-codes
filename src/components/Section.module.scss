@@ -1,0 +1,20 @@
+.Section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+
+  header {
+    display: flex;
+    // An empty box synthesises its baseline from its bottom edge, so this
+    // sits the 1px rule on the text baseline rather than its descender line
+    align-items: baseline;
+    gap: 16px;
+
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+  }
+}

@@ -1,16 +1,24 @@
-import { Link } from "@/components"
+import { Link } from '@/components'
+import Return from '@/components/Icon/Return.svg'
 import styles from './Page.module.scss'
-import ArrowLeft from '@/components/ArrowLeft.svg'
 
-export const Page = ({ children }: { children: React.ReactNode }) => {
+export const Page = ({
+  children,
+  aside,
+}: {
+  children: React.ReactNode
+  aside?: React.ReactNode
+}) => {
   return (
     <div className={styles.Page}>
-      <nav>
-        <Link href="/"><ArrowLeft /></Link>
-      </nav>
-      <main>
-        {children}
-      </main>
+      <aside className={styles.aside} data-has-toc={aside ? true : undefined}>
+        <Link href="/" className={styles.indexLink}>
+          <Return />
+          <span>Index</span>
+        </Link>
+        {aside ? <div className={styles.toc}>{aside}</div> : null}
+      </aside>
+      <main className={styles.main}>{children}</main>
     </div>
   )
 }

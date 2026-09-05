@@ -1,6 +1,6 @@
 'use client'
 
-import { Page } from "@/components"
+import { Page } from '@/components'
 
 const Error = ({ statusCode }: { statusCode: any }) => {
   return <Page>{statusCode}</Page>

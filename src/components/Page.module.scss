@@ -1,32 +1,100 @@
+@use '@/styles/variables.scss' as *;
+
 .Page {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  // Column 1 has a floor so the aside can never ride over the body text on a
+  // viewport too narrow to centre everything
+  grid-template-columns: minmax($aside-min, 1fr) min($content-width, 100%) 1fr;
+  align-items: start;
   width: 100%;
   box-sizing: border-box;
-  height: 100%;
-  gap: 1em;
+  // Starts both columns level with where the sticky aside parks, so the
+  // article top lines up with the Index link and the aside never jumps
+  padding-top: $content-top;
 
-  nav {
-    height: 100%;
-    width: 25px;
-    position: relative;
-
-      a {
-        text-decoration: none;
-        height: max-content;
-        position: fixed;
-        top: 25px;
-        left: 25px;
-        height: 1em;
-
-        svg {
-
-        }
-      }
+  @include mobile {
+    grid-template-columns: min($content-width, 100%);
+    justify-content: center;
+    padding-top: 0;
   }
+}
 
-  main {
+.aside {
+  grid-column: 1;
+  justify-self: start;
+  align-self: start;
+  position: sticky;
+  top: $sticky-top;
+  width: max-content;
+  max-width: 100%;
+  padding-left: $aside-indent;
+  box-sizing: content-box;
+
+  &[data-has-toc] {
+    height: calc(100vh - #{$sticky-top});
+    // Index link pinned to the top, TOC taking the rest and centring itself
     display: flex;
     flex-direction: column;
+
+    .toc {
+      // Pinned width keeps $toc-min-viewport honest; a max-content TOC would
+      // drift with the longest heading and re-introduce the collision
+      width: $toc-width;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  // Nested under [data-has-toc] to outrank the rules above, which are more
+  // specific than a bare .aside override inside a media query
+  @include no-toc-room {
+    &[data-has-toc] {
+      height: auto;
+
+      .toc {
+        display: none;
+      }
+    }
+  }
+
+  @include mobile {
+    position: static;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: stretch;
+    padding-left: 0;
+    // Sits one line above the article title
+    margin-bottom: 1em;
+
+    &[data-has-toc] {
+      display: block;
+      height: auto;
+    }
+  }
+}
+
+.indexLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--subtle);
+  white-space: nowrap;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.main {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  @include mobile {
+    grid-column: 1;
+    grid-row: 2;
   }
 }
